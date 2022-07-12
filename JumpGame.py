@@ -238,15 +238,16 @@ def main():
 
     # Loop for reading pushed keys
     while not is_game_over:
-        # Checking if the "right" arrow has been pressed
-        if keyboard.read_key() == 'right':
-            current_position = move_to_right(current_position)
-        # Checking if the "left" arrow has been pressed
-        elif keyboard.read_key() == 'left':
-            current_position = move_to_left(current_position)
-        # Checking if the "r" key has been pressed
-        elif keyboard.read_key() == 'r':
-            current_position = starting_position
+        match keyboard.read_key():
+            # Checking if the "right" arrow has been pressed
+            case 'right':
+                current_position = move_to_right(current_position)
+            # Checking if the "left" arrow has been pressed
+            case 'left':
+                current_position = move_to_left(current_position)
+            # Checking if the "r" key has been pressed
+            case 'r':
+                current_position = starting_position
 
         # Checking if the game is finished after the last move
         is_game_over = test_if_won(current_position)
